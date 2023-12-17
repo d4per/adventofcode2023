@@ -1,0 +1,103 @@
+[package]
+name = "untitled"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+regex = "1.10.2"
+lazy_static = "1.4.0"
+eater_rangeset = "0.1.1"
+counter = "0.5.7"
+num = "0.4.1"
+
+
+
+[[bin]]
+name = "a1"
+path = "src/a1/run.rs"
+
+[[bin]]
+name = "a2"
+path = "src/a2/run.rs"
+
+[[bin]]
+name = "a3"
+path = "src/a3/run.rs"
+
+[[bin]]
+name = "a4"
+path = "src/a4/run.rs"
+
+[[bin]]
+name = "a5"
+path = "src/a5/run.rs"
+
+[[bin]]
+name = "a6"
+path = "src/a6/run.rs"
+
+[[bin]]
+name = "a7"
+path = "src/a7/run.rs"
+
+[[bin]]
+name = "a7_part2"
+path = "src/a7/run_part2.rs"
+
+[[bin]]
+name = "a8"
+path = "src/a8/run.rs"
+
+[[bin]]
+name = "a9"
+path = "src/a9/run.rs"
+
+[[bin]]
+name = "a10"
+path = "src/a10/run.rs"
+
+[[bin]]
+name = "a11"
+path = "src/a11/run.rs"
+
+[[bin]]
+name = "a12"
+path = "src/a12/run.rs"
+
+[[bin]]
+name = "a13"
+path = "src/a13/run.rs"
+
+[[bin]]
+name = "a14"
+path = "src/ref/run.rs"
+
+[[bin]]
+name = "a15"
+path = "src/a15/run.rs"
+
+[[bin]]
+name = "a16"
+path = "src/a16/run.rs"
+
+[[bin]]
+name = "a17"
+path = "src/a17/run.rs"
+
+[[bin]]
+name = "a18"
+path = "src/a18/run.rs"
+
+
+[[bin]]
+name = "ref"
+path = "src/a14r/run.rs"
+
+[[bin]]
+name = "test"
+path = "src/test/run.rs"
+
+[build]
+rustflags = ["-C", "target-cpu=native"]
