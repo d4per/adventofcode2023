@@ -21,37 +21,25 @@ fn main() {
     path.insert(current_pos);
 
     let directions: HashMap<char, (i32, i32)> = HashMap::from_iter([
-        ('U', (0,-1)),
-        ('D', (0, 1)),
-        ('L', (-1, 0)),
-        ('R', (1, 0)),
+        ('3', (0,-1)),
+        ('1', (0, 1)),
+        ('2', (-1, 0)),
+        ('0', (1, 0)),
     ]);
 
     for line in lines {
         let (_, [direction, steps_str, color]) = RE.captures(line).iter().next().unwrap().extract();
-        let steps: i32 = steps_str.parse().unwrap();
+        let steps: i64 = i64::from_str_radix(&color[0..5], 16).unwrap();
 
-        let dir = directions.get(&direction.chars().nth(0).unwrap()).unwrap();
+        let dir = directions.get(&color[5..6].chars().nth(0).unwrap()).unwrap();
         for i in 0..steps {
             current_pos = (current_pos.0 + dir.0, current_pos.1 + dir.1);
             path.insert(current_pos);
         }
-    }
 
-    let inside = (1, 1);
-    let mut fill_queue: VecDeque<(i32, i32)> = VecDeque::new();
-    fill_queue.push_back(inside);
 
-    while !fill_queue.is_empty() {
-        let coord = fill_queue.pop_front().unwrap();
-        if !path.contains(&coord) {
-            path.insert(coord);
+        println!("{}", path.len());
 
-            fill_queue.push_back((coord.0+1, coord.1));
-            fill_queue.push_back((coord.0-1, coord.1));
-            fill_queue.push_back((coord.0, coord.1+1));
-            fill_queue.push_back((coord.0, coord.1-1));
-        }
     }
 
     let min_y = path.iter().map(|c| c.1).min().unwrap();
@@ -59,22 +47,11 @@ fn main() {
     let min_x = path.iter().map(|c| c.0).min().unwrap();
     let max_x = path.iter().map(|c| c.0).max().unwrap();
 
-    for y in min_y..=max_y {
-        for x in min_x..=(max_x/2) {
-            let c = (x,y);
-            if path.contains(&c) {
-                print!("X");
-            } else {
-                print!(" ");
-            }
-        }
-        println!();
-    }
 
 
 
 
-    println!("part1: {:?}", path.len());
+    println!("part2: {:?}", path.len());
     //56923
 
 }
